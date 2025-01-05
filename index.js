@@ -44,6 +44,15 @@ app.post('/change-password', (req, res) => {
   });
 });
 
+// **Nieuw endpoint**: Hiermee kan de Flutter-app checken of het wachtwoord
+// (dat op de server staat) nog hetzelfde is als waarmee de gebruiker ingelogd is.
+app.get('/current-password', (req, res) => {
+  return res.status(200).json({
+    success: true,
+    password: user.password,
+  });
+});
+
 // Server starten
 app.listen(PORT, () => {
   console.log(`Server draait op poort ${PORT}`);

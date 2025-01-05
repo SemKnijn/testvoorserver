@@ -3,7 +3,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 3000;
+
+// Als je hostingplatform een poort toewijst via environment variable PORT, gebruik die.
+// Anders gebruik je 3000 lokaal.
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
@@ -43,5 +46,5 @@ app.post('/change-password', (req, res) => {
 
 // Server starten
 app.listen(PORT, () => {
-  console.log(`Server luistert op http://localhost:${PORT}`);
+  console.log(`Server draait op poort ${PORT}`);
 });
